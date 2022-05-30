@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#test
+#
 import argparse
 import gi
 import gettext
