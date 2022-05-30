@@ -543,7 +543,7 @@ class JobStatusPanel(ScreenPanel):
             self.enable_button("resume", "cancel")
         else:
             if self.state == "cancelled":#flsun add ,if cancel print ,wait 7s to show menu button ,to solve a bug
-                time.sleep(7)#flsun add
+                time.sleep(6)#flsun add
             self.labels['button_grid'].attach(Gtk.Label(""), 0, 0, 1, 1)
             self.labels['button_grid'].attach(Gtk.Label(""), 1, 0, 1, 1)
             self.labels['button_grid'].attach(self.labels['restart'], 2, 0, 1, 1)
