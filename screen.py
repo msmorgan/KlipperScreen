@@ -411,8 +411,8 @@ class KlipperScreen(Gtk.Window):
         box.pack_start(label, True, True, 0)
         box.pack_end(close, False, False, 0)
         box.set_halign(Gtk.Align.CENTER)
-
-        cur_panel = self.panels[self._cur_panels[-1]]
+        #flsun delete ,this line code is bug if start print without filament
+        #cur_panel = self.panels[self._cur_panels[-1]]
 
         self.base_panel.get().put(box, 0, 0)
 
