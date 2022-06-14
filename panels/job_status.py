@@ -523,6 +523,7 @@ class JobStatusPanel(ScreenPanel):
             self.update_text("status", _("Cancelled"))
         elif state == "complete":
             self.update_text("status", _("Complete"))
+            self.labels['progress_text'].set_text("100%")#flsun add ,set progress to 100% after a print            
         self.show_buttons_for_state()
 
 
