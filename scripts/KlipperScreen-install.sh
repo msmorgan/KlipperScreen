@@ -32,6 +32,8 @@ echo_ok ()
 install_packages()
 {
     echo_text "Update package data"
+    #flsun add.fix webcam.
+    cp -f /home/pi/KlipperScreen/scripts/webcam.txt /home/pi/klipper_config/webcam1.txt
     sudo apt-get update
 
     echo_text "Checking for broken packages..."
@@ -121,8 +123,6 @@ update_x11()
 start_KlipperScreen()
 {
     echo_text "Starting service..."
-    #flsun add.fix webcam.
-    sudo cp -f /home/pi/KlipperScreen/scripts/webcam.txt /home/pi/klipper_config/webcam1.txt
     sudo systemctl start KlipperScreen
 }
 if [ "$EUID" == 0 ]
