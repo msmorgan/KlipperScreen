@@ -35,8 +35,11 @@ class SystemPanel(ScreenPanel):
                        _("Are you sure you wish to reboot the system?"), "machine.reboot")
         reboot.set_vexpand(False)
         shutdown = self._gtk.ButtonImage('shutdown', _('System\nShutdown'), 'color4')
-        shutdown.connect("clicked", self._screen._confirm_send_action,
-                         _("Are you sure you wish to shutdown the system?"), "machine.shutdown")
+        #flsun delete
+        #shutdown.connect("clicked", self._screen._confirm_send_action,
+        #                 _("Are you sure you wish to shutdown the system?"), "machine.shutdown")
+        #flsun add
+        shutdown.connect("clicked", self.shutdown_pad)#flsun add
         shutdown.set_vexpand(False)
 
         info = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
@@ -100,12 +103,12 @@ class SystemPanel(ScreenPanel):
                 i = i + 1
 
         scroll.add(infogrid)
-        #Flsun，del System "shutdown" button. by:zzcatvs
-        grid.attach(scroll, 0, 0, 3, 2)
+        #Flsun，add. 
+        grid.attach(scroll, 0, 0, 4, 2)
         grid.attach(restart, 0, 2, 1, 1)
         grid.attach(firmrestart, 1, 2, 1, 1)
         grid.attach(reboot, 2, 2, 1, 1)
-        #grid.attach(shutdown, 2, 2, 1, 1)
+        grid.attach(shutdown, 3, 2, 1, 1)
         self.content.add(grid)
 
     def activate(self):
@@ -414,3 +417,6 @@ class SystemPanel(ScreenPanel):
 
     def restart_ks(self, widget):
         os.system("sudo systemctl restart %s" % self._config.get_main_config_option('service'))
+        
+    def shutdown_pad(self, widget): #flsun add ,add a shutdown function
+        os.system("shutdown -H now")
