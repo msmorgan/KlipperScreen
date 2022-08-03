@@ -241,7 +241,8 @@ class Printer:
                 "power_devices": {
                     "count": len(self.get_power_devices())
                 },
-                "probe": self.section_exists("probe")
+                "probe": self.section_exists("probe"),#flsun add ,add a ',' ADXL345 7.29 2022 
+                "input_shaper": self.config_section_exists("input_shaper")#flsun add ADXL345 7.29 2022
             }
         }
 
@@ -290,6 +291,22 @@ class Printer:
         if dev in self.devices and stat in self.devices[dev]:
             return self.devices[dev][stat]
         return None
+
+    def get_fan_speed(self, fan="fan", speed=None): #flsun add,add a get fan speed function
+        if fan not in self.config or fan not in self.data:
+            logging.debug("Error getting %s config", fan)
+            return speed if speed is not None else 0
+        if speed is None and "speed" in self.data[fan]:
+            speed = self.data[fan]["speed"]
+        if 'max_power' in self.config[fan]:
+            max_power = float(self.config[fan]['max_power'])
+            if max_power > 0:
+                speed = speed / max_power
+        if 'off_below' in self.config[fan]:
+            off_below = float(self.config[fan]['off_below'])
+            if speed < off_below:
+                speed = 0
+        return speed
 
     def get_extruder_count(self):
         return self.extrudercount

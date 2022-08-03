@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KlipperScreen\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-26 15:48-0300\n"
-"PO-Revision-Date: 2022-04-28 16:58+0800\n"
+"PO-Revision-Date: 2022-07-30 16:57+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -30,7 +30,6 @@ msgstr "使用 24 小时制"
 
 msgid "Screen Restart"
 msgstr "重启屏幕"
-
 
 msgid "Splash"
 msgstr "启动"
@@ -285,6 +284,9 @@ msgstr "初始化中"
 
 msgid "Initializing printer..."
 msgstr "初始化打印机中..."
+
+msgid "Input Shaper"
+msgstr "共振补偿"
 
 msgid "Interface"
 msgstr "接口"

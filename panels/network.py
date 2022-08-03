@@ -51,6 +51,11 @@ class NetworkPanel(ScreenPanel):
         self.labels['interface'].set_text(" %s: %s" % (_("Interface"), self.interface))
         self.labels['disconnect'] = self._gtk.Button(_("Disconnect"), "color2")
 
+        self.labels['ip'] = Gtk.Label()#flsun add,add ip refresh function 7.28 2022
+        self.labels['ip'].set_hexpand(True)#flsun add
+        reload_networks = self._gtk.ButtonImage("refresh", None, "color1")#flsun add
+        reload_networks.connect("clicked", self.reload_networks)#flsun add
+        reload_networks.set_hexpand(False)#flsun add
 
         sbox = Gtk.Box()
         sbox.set_hexpand(True)
@@ -58,6 +63,10 @@ class NetworkPanel(ScreenPanel):
         sbox.add(self.labels['interface'])
         # sbox.add(self.labels['disconnect'])
 
+        if ip is not None: #flsun add，add ip refresh function 7.28 2022
+            self.labels['ip'].set_text("IP: %s  " % ip)#flsun add
+            sbox.add(self.labels['ip'])#flsun add
+        sbox.add(reload_networks)#flsun add
 
         scroll = Gtk.ScrolledWindow()
         scroll.set_property("overlay-scrolling", False)
@@ -422,3 +431,10 @@ class NetworkPanel(ScreenPanel):
 
         self.labels['networkinfo'].set_markup(connected)
         self.labels['networkinfo'].show_all()
+
+    def reload_networks(self, widget=None): #flsun add，add ip refresh function 7.28 2022
+        self.networks = {}
+        self.labels['networklist'].remove_column(0)
+        self._screen.wifi.rescan()#flsun add,_screen.wifi
+        if self._screen.wifi is not None and self._screen.wifi.is_initialized():
+            GLib.idle_add(self.load_networks)
