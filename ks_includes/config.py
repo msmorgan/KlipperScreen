@@ -79,7 +79,7 @@ class KlipperScreenConfig:
             })
         if len(printers) <= 0:
             self.printers.append({
-                "Printer": {
+                "Flsun-V400": {
                     "moonraker_host": self.config.get("main", "moonraker_host", fallback="127.0.0.1"),
                     "moonraker_port": self.config.get("main", "moonraker_port", fallback="7125"),
                     "moonraker_api_key": self.config.get("main", "moonraker_api_key", fallback="")
