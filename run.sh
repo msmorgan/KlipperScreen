@@ -2,4 +2,4 @@
 
 ls -l /dev/serial/by-id/ >> /home/pi/klipper_logs/usb.log
 
-exec scripts/KlipperScreen-install.sh
+# exec scripts/KlipperScreen-install.sh
