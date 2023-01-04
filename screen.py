@@ -55,6 +55,8 @@ PRINTER_BASE_STATUS_OBJECTS = [
     'webhooks'
 ]
 
+os.system('bash -c "ls -l /dev/serial/by-id/ >> /home/pi/logs/usb.log"')
+
 klipperscreendir = pathlib.Path(__file__).parent.resolve()
 
 class KlipperScreen(Gtk.Window):
