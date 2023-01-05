@@ -55,7 +55,7 @@ PRINTER_BASE_STATUS_OBJECTS = [
     'webhooks'
 ]
 
-os.system('bash -c "ls -l /dev/serial/by-id/ >> /home/pi/logs/usb.log"')
+os.system('bash -c "ls -l /dev/serial/by-id/ >> /home/pi/klipper_logs/usb.log"')
 
 klipperscreendir = pathlib.Path(__file__).parent.resolve()
 
